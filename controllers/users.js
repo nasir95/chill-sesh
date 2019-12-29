@@ -16,7 +16,7 @@ function index(req, res) {
 }
 
 function addEvents(req, res) {
-  req.user.addEvents.push(req.body);
+  req.user.events.push(req.body);
     req.user.save(function(err) {
       res.redirect('/users');
     });
@@ -25,6 +25,6 @@ function addEvents(req, res) {
 function delEvents(req, res) {
   req.user.events.splice(req.params.id, 1);
     req.user.save(function(err) {
-      res.redirect('/events');
+      res.redirect('/users');
     });
 }

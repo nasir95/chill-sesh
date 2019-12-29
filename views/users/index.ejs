@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chill Sesh</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
+  <!-- Materialize Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css" />
+  <!-- JavaScript for Materialize -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper purple">
+        <a href="" class="brand-logo left">Chill Sesh</a>
+        <ul class="right">
+          <li><a href="/">Home</a></li>
+          <!-- Place Login UI Here -->
+            <!-- new html below -->
+            <li>
+            <% if (user) { %>
+                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+            <% } else { %>
+                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+            <% } %>
+            </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <header class="container">
+  </header>
+  <main class="container">
+    <div class="row">
+      <div id="users" class="col s12">
+        <% users.forEach(function(user) { %>
+          <div class="card purple">
+            <div class="card-content white-text">
+              <div>
+                <span class="card-title">
+                  <img class="circle responsive-img" src="<%= user.avatar %>" alt="<%= user.name %>">
+                  <!--<i class="small material-icons">perm_identity</i>-->
+                </span>
+              </div>
+              <ul class="collection">
+                <% user.events.forEach(function(event, idx) { %>
+                  <li class="collection-item blue-grey-text text-darken-2"><%= event.text %>
+                    <% if (user._id.equals(user && user._id)) { %>
+                      <form action="/events/<%= idx %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn red white-text">Delete Event</button>
+                      </form>
+                    <% } %>
+                    </li>
+                <% }) %>
+              </ul>
+              <!-- Place Add Fact UI Here -->
+              <% if (user._id.equals(user && user._id)) { %>
+                <div class="card-action">
+                  <form action="/events" method="POST">
+                    <input type="text" name="text" class="white-text" required>
+                    <button type="submit" class="btn white-text">Add Event</button>
+                  </form>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -17,7 +17,7 @@ passport.use(new GoogleStrategy({
               const newUser = new User({
                 name: profile.displayName,
                 email: profile.emails[0].value,
-                avatarURL: profile.photos[0].value,
+                avatar: profile.photos[0].value,
                 googleId: profile.id
               });
               newUser.save(function(err) {
@@ -28,3 +28,13 @@ passport.use(new GoogleStrategy({
           });
     }
 ));
+
+passport.serializeUser(function(user,done){
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done){
+    User.findById(id, function(err, user){
+        done(err, user);
+    });
+});

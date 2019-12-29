@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 /*
-The factSchema is used to embedded docs in as student doc.
-There is no model and no 'facts' collection
+The userSchema is used to embedded docs in as student doc.
+There is no model and no 'events' collection
 */
 const eventSchema = new mongoose.Schema({
   text: {
@@ -15,7 +15,7 @@ const eventSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
-  avatarURL: String,
+  avatar: String,
   events: [eventSchema],
   googleId: String
 }, {

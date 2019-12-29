@@ -6,6 +6,7 @@ const passport = require('passport');
 const port = 3000;
 const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
+const usersRoutes = require('./routes/users');
 
 //Load the env vars
 require('dotenv').config();
@@ -38,7 +39,7 @@ app.use(methodOverride('_method'));
 
 //Mount routes
 app.use('/', indexRoutes);
-
+app.use('/', usersRoutes);
 // Listen to port
 
 app.listen(port, () => {
