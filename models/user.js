@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 
-/*
-The userSchema is used to embedded docs in as student doc.
-There is no model and no 'events' collection
-*/
+
 const eventSchema = new mongoose.Schema({
   text: {
     type: String,

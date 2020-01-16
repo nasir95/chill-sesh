@@ -7,6 +7,7 @@ const port = 3000;
 const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 const usersRoutes = require('./routes/users');
+const adminsRoutes = require('./routes/admins');
 
 //Load the env vars
 require('dotenv').config();
@@ -17,6 +18,7 @@ const app = express();
 //connect to the MongoDB with mongoose
 require('./config/database');
 require('./config/passport');
+
 
 
 // view engine setup 
@@ -40,6 +42,7 @@ app.use(methodOverride('_method'));
 //Mount routes
 app.use('/', indexRoutes);
 app.use('/', usersRoutes);
+app.use('/', adminsRoutes);
 // Listen to port
 
 app.listen(port, () => {

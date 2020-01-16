@@ -1,15 +1,16 @@
 const User = require('../models/user');
 
 
+
 module.exports = {
   index,
-  addEvents,
-  delEvents
+  addEvents
+  
 };
 
 function index(req, res) {
   User.find({}).sort('-events').exec(function(err, users) {
-    res.render('users/index', { 
+    res.render('admins/index', { 
       users,
       user: req.user
     });
@@ -22,11 +23,3 @@ function addEvents(req, res) {
       res.redirect('/users');
     });
 }
-
-function delEvents(req, res) {
-  req.user.events.splice(req.params.id, 1);
-    req.user.save(function(err) {
-      res.redirect('/users');
-    });
-}
-

@@ -2,37 +2,25 @@
 
 .brand-logo {
     margin-left: 15px;
-    font-family:'Lobster Two', cursive;;
-  }
-  .card .card-content .card-title {
-    margin-bottom: 10px;
+    font-family:'Lobster Two', cursive;
   }
   header {
     display: flex;
     height: 100px;
     justify-content: center;
-  }
-  .collection-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #search-row form {
-    padding-top: 20px;
+    font-family: 'Lobster Two', cursive;
   }
   .user-name {
     position: relative;
     top: -5px;
+    color: black;
   }
+  
   .responsive-img {
     height: 50px !important;
     margin-right: 20px;
   }
-  .collection-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  
 
   /* Slideshow container */
 .slideshow-container {
