@@ -1,30 +1,32 @@
 const User = require('../models/user');
-
+const Event = require('../models/event')
 
 module.exports = {
   index,
-  addEvents,
+  show,
   delEvents
 };
 
 function index(req, res) {
-  User.find({}).sort('-events').exec(function(err, users) {
+  User.find({},(function(err, users) {
     res.render('users/index', { 
       users,
       user: req.user
     });
-  });
+  }));
 }
 
-function addEvents(req, res) {
-  req.user.events.push(req.body);
-    req.user.save(function(err) {
-      res.redirect('/users');
+function show(req, res) {
+  User.findById(req.params.id).populate('event').exec(function(err, user) {
+    console.log(user);
+    res.render('users/index', { 
+      user 
     });
+   });
 }
 
 function delEvents(req, res) {
-  req.user.events.splice(req.params.id, 1);
+  req.user.event.splice(req.params.id, 1);
     req.user.save(function(err) {
       res.redirect('/users');
     });

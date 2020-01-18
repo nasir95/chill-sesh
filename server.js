@@ -7,7 +7,7 @@ const port = 3000;
 const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 const usersRoutes = require('./routes/users');
-const adminsRoutes = require('./routes/admins');
+const eventsRoutes = require('./routes/events');
 
 //Load the env vars
 require('dotenv').config();
@@ -42,7 +42,7 @@ app.use(methodOverride('_method'));
 //Mount routes
 app.use('/', indexRoutes);
 app.use('/', usersRoutes);
-app.use('/', adminsRoutes);
+app.use('/', eventsRoutes);
 // Listen to port
 
 app.listen(port, () => {

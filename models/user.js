@@ -1,19 +1,11 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-
-const eventSchema = new mongoose.Schema({
-  text: {
-    type: String,
-    required: true}
-}, {
-  timestamps: true
-});
-
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   name: String,
   email: String,
   avatar: String,
-  events: [eventSchema],
+  events: [{type: Schema.Types.ObjectId, ref: 'Event'}],
   googleId: String
 }, {
   timestamps: true
