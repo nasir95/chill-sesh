@@ -46,15 +46,15 @@ function show(req, res) {
   };
 
   function deleteOne(req, res) {
-
-    // Event.findById(req.params.id, function(err, event) {
-      // console.log(event)
-        event.remove(req.params.id, function(event, err) {
-        console.log(event);
-          res.redirect('/events');
+    User.findById(req.user, function(err, user){
+      user.events.forEach(function(m){
+          Events.findOneAndDelete({_id: m}, function(err) {
+              if(err) return console.log(err);
+              res.redirect('/events')
         });
-      // })
-      };  
+      });
+    });
+  }
     
   
 

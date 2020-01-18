@@ -29,7 +29,6 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 app.use(morgan('dev'));
-app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
@@ -39,13 +38,13 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(methodOverride('_method'));
 
 //Mount routes
 app.use('/', indexRoutes);
-app.use('/', usersRoutes);
-app.use('/', eventsRoutes);
-app.use('/', commentsRoutes);
+app.use('/users', usersRoutes);
+app.use('/events', eventsRoutes);
+app.use('/comments', commentsRoutes);
 // Listen to port
 
 app.listen(port, () => {

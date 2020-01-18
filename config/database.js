@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost:3000/oauth2callback', { 
+mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost:3000/events', { 
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true 
