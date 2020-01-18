@@ -38,23 +38,24 @@ function create(req, res) {
 
 function show(req, res) {
   Event.findById(req.params.id).populate('events').exec(function(err, event) {
-    console.log(event);
+    // console.log(event);
     res.render('events/show', { 
        event, user: req.user 
     });
    });
   };
 
-  function deleteOne(req, res){
-    Event.findById(req.params.id).populate('events').exec(function(err, event) {
-      req.event.splice(req.params.id, 1);
-    req.user.save(function(err) {
-      res.redirect('/events', {
-         event, user: req.user
-      });
-     });
-    })
-  }
+  function deleteOne(req, res) {
+
+    // Event.findById(req.params.id, function(err, event) {
+      // console.log(event)
+        event.remove(req.params.id, function(event, err) {
+        console.log(event);
+          res.redirect('/events');
+        });
+      // })
+      };  
+    
   
 
 

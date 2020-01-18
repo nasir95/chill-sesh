@@ -35,24 +35,24 @@
   <header class="container">
   </header>
   <main class="container">
-   <% events.forEach(function (event, idx) { %>
+   <% events.forEach(function (event) { %>
    
 
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
+      <img class="circle responsive-img" src="<%= user.avatar %>" alt="<%= user.name %>">
       <h2><%= event.eventName %></h2 >
+      <div>Posted by <%=user.name%></div>
       <label>Location</label>
       <p><%= event.location %> </p>
       <label>Date</label>
       <p><%= event.date %></p>
       <a href='/events/<%= event._id %>' class="btn btn-primary">Details</a>
     </div>
-    
   </div>
 </div>
-
-   <% }) %>
+  <% }) %>
   </main>
 </body>
 </html>

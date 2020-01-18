@@ -44,15 +44,20 @@
                 <h2 class="event-name">
                   <%= event.eventName %>
                 </h2>
+                <label>Location</label>
+                <p class='card-text'><%= event.location %></p>
+                <Label>Date</Label>
+                <p class='card-text'><%= event.date %></p>
+                <Label>Description</Label>
                 <p class="card-text">
                   <%= event.description %>
                 </p>
               </div>
               <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                  <h1><span id="thisone"></span></h1>
-                  <button onclick="addone()" type="button" class="btn btn-lg btn-info" id="justdoit">Going</button>
-                  <h1><span id="overhere"></span></h1>
+                <div class="container"></div>
+                  <form action="/events/5e22d7d4db062c01e7f06bf1?_method=DELETE" method="POST">
+                    <button type="submit" class="btn red white-text right">Delete Event</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -60,15 +65,4 @@
         </div>
   </main>
 </body>
-<script type="text/javascript">
-    function doit(){
-      document.getElementById("thisone").innerHTML = "you";
-    }
-
-    function addone(){
-      var foo = document.getElementById('thisone').innerHTML;
-      foo++;
-      document.getElementById('thisone').innerHTML = foo;
-    }
-</script>
 </html>
