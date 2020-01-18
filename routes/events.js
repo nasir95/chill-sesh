@@ -4,6 +4,7 @@ const eventsCtrl = require('../controllers/events');
 
 router.get('/events', isLoggedIn, eventsCtrl.index);
 router.get('/events/new', isLoggedIn, eventsCtrl.new);
+router.get('/events/:id', isLoggedIn, eventsCtrl.show);
 router.post('/events', isLoggedIn, eventsCtrl.create);
 
 

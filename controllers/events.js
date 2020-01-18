@@ -5,11 +5,13 @@ const Event = require('../models/event')
 module.exports = {
   index,
   new: addEvents,
-  create
+  create,
+  show
 };
 
 function index(req, res) {
   Event.find({}).populate('events').exec(function(err, events) {
+    // console.log(events)
     res.render('events/index', { events, user: req.user });
   });
 }
@@ -31,3 +33,12 @@ function create(req, res) {
     });  
   });
 }
+
+function show(req, res) {
+  Event.findById(req.params.id).populate('events').exec(function(err, event) {
+    console.log(event);
+    res.render('events/show', { 
+       event, user: req.user 
+    });
+   });
+  };

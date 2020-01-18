@@ -18,6 +18,7 @@
       <div class="nav-wrapper purple">
         <a href="" class="brand-logo left">Chill Sesh</a>
         <ul class="right">
+          <li><a href="/events">Events</a></li>
           <li><a href="/events/new">Post Event</a></li>
           <!-- Place Login UI Here -->
             <!-- new html below -->
@@ -35,25 +36,23 @@
   <header class="container">
   </header>
   <main class="container">
-   <% events.forEach(function (event) { %>
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          
-          <div class="col-lg-6">
-            <h2 class="event-name">
-              <%= event.eventName %>
-            </h2>
-            <p class="card-text">
-              <%= event.description %>
-            </p>
-            <a href='/events/<%= event._id %>' class="btn btn-primary">Details</a>
+    
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              
+              <div class="col-lg-6">
+                <h2 class="event-name">
+                  <%= event.eventName %>
+                </h2>
+                <p class="card-text">
+                  <%= event.description %>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      
-    </div>
-   <% }) %>
+       
   </main>
 </body>
 </html>
