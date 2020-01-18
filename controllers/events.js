@@ -11,6 +11,7 @@ module.exports = {
 
 function index(req, res) {
   Event.find({}).populate('events').exec(function(err, events) {
+    events = events.reverse();
     // console.log(events)
     res.render('events/index', { events, user: req.user });
   });
@@ -42,3 +43,5 @@ function show(req, res) {
     });
    });
   };
+
+  

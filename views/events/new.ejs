@@ -11,14 +11,15 @@
   <link rel="stylesheet" href="/css/style.css" />
   <!-- JavaScript for Materialize -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script defer src="/js/script.js"></script>
 </head>
-<body>
+<body class=>
   <div class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper purple">
+      <div class="nav-wrapper #01579b light-blue darken-4">
         <a href="" class="brand-logo left">Chill Sesh</a>
         <ul class="right">
-          <li><a href="/">Home</a></li>
+          <li><a href="/events">Events</a></li>
           <!-- Place Login UI Here -->
             <!-- new html below -->
             <li>
@@ -34,19 +35,36 @@
   </div>
   <header class="container">
   </header>
-  <main class="container">
+  <main class="container ">
       <form method="POST" action="/events">
         <div class = "form-group">
           <label>Name Of Event</label>
           <input name ="eventName" class="form-control" placeholder="Event"/>
         </div>
         <div class="form-group">
+          <label>Date</label>
+          <input type="datetime-local" id="departure-date"
+                name="date" value="2020-01-18T19:30"
+                min="2020-01-18T00:00" max="2025-12-16T00:00">
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input id="search_term" name="location" class="form-control"></input>
+        </div>
+        <div class="form-group">
           <label>Description</label>
           <textarea name="description" class="form-control"></textarea>
         </div>
-        <input type="submit" class="btn btn-info" value="Post"/>
+        <input type="submit" class="btn btn-info right" value="Post"/>
       </form>
     </div>
   </main>
 </body>
+<script>
+  function activatePlacesSearch(){
+    var input = document.getElementById('search_term');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+  </script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs58KsnkemmoLmIBV6sRWX18RUpAW8CB4&libraries=places&callback=activatePlacesSearch"></script>  
 </html>

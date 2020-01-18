@@ -15,7 +15,7 @@
 <body>
   <div class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper purple">
+      <div class="nav-wrapper #01579b light-blue darken-4">
         <a href="" class="brand-logo left">Chill Sesh</a>
         <ul class="right">
           <li><a href="/events/new">Post Event</a></li>
@@ -36,23 +36,22 @@
   </header>
   <main class="container">
    <% events.forEach(function (event) { %>
+   
+
+<div class="row">
+  <div class="leftcolumn">
     <div class="card">
-      <div class="card-body">
-        <div class="row">
-          
-          <div class="col-lg-6">
-            <h2 class="event-name">
-              <%= event.eventName %>
-            </h2>
-            <p class="card-text">
-              <%= event.description %>
-            </p>
-            <a href='/events/<%= event._id %>' class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
-      
+      <h2><%= event.eventName %></h2 >
+      <label>Location</label>
+      <p><%= event.location %> </p>
+      <label>Date</label>
+      <p><%= event.date %></p>
+      <a href='/events/<%= event._id %>' class="btn btn-primary">Details</a>
     </div>
+    
+  </div>
+</div>
+
    <% }) %>
   </main>
 </body>

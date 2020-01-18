@@ -57,3 +57,7 @@ $(document).ready(function(){
   
 });
 
+function activatePlacesSearch(){
+	var input = document.getElementById('search-term');
+	var autocomplete = new google.maps.places.Autocomplete(input);
+}
