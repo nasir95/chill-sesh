@@ -35,12 +35,11 @@
   </div>
   <header class="container">
   </header>
-  <main class="container">
+  <form class="container">
     
         <div class="card">
           <div class="card-body">
             <div class="row">
-              
               <div class="col-lg-6">
                 <h2 class="event-name">
                   <%= event.eventName %>
@@ -49,10 +48,27 @@
                   <%= event.description %>
                 </p>
               </div>
+              <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1><span id="thisone"></span></h1>
+                  <button onclick="addone()" type="button" class="btn btn-lg btn-info" id="justdoit">Going</button>
+                  <h1><span id="overhere"></span></h1>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-       
   </main>
 </body>
+<script type="text/javascript">
+    function doit(){
+      document.getElementById("thisone").innerHTML = "you";
+    }
+
+    function addone(){
+      var foo = document.getElementById('thisone').innerHTML;
+      foo++;
+      document.getElementById('thisone').innerHTML = foo;
+    }
+</script>
 </html>

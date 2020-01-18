@@ -3,11 +3,12 @@ const express = require('express');
 const morgan = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
-const port = 3000;
+const port = process.env.PORT || 3000;
 const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 const usersRoutes = require('./routes/users');
 const eventsRoutes = require('./routes/events');
+const commentsRoutes = require('./routes/comments');
 
 //Load the env vars
 require('dotenv').config();
@@ -43,6 +44,7 @@ app.use(methodOverride('_method'));
 app.use('/', indexRoutes);
 app.use('/', usersRoutes);
 app.use('/', eventsRoutes);
+app.use('/', commentsRoutes);
 // Listen to port
 
 app.listen(port, () => {

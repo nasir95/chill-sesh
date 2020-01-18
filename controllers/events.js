@@ -6,7 +6,8 @@ module.exports = {
   index,
   new: addEvents,
   create,
-  show
+  show,
+  deleteOne
 };
 
 function index(req, res) {
@@ -44,4 +45,16 @@ function show(req, res) {
    });
   };
 
+  function deleteOne(req, res){
+    Event.findById(req.params.id).populate('events').exec(function(err, event) {
+      req.event.splice(req.params.id, 1);
+    req.user.save(function(err) {
+      res.redirect('/events', {
+         event, user: req.user
+      });
+     });
+    })
+  }
   
+
+
