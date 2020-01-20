@@ -36,14 +36,13 @@
   </header>
   <main class="container">
    <% events.forEach(function (event) { %>
-   
 
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <img class="circle responsive-img" src="<%= user.avatar %>" alt="<%= user.name %>">
+      <img class="circle responsive-img" src="<%= event.author.avatar %>" alt="<%= event.author.name %>">
       <h2><%= event.eventName %></h2 >
-      <div>Posted by <%=user.name%></div>
+      <div>Posted by <%=event.author.name %></div>
       <label>Location</label>
       <p><%= event.location %> </p>
       <label>Date</label>

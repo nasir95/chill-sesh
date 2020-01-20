@@ -13,7 +13,10 @@ const eventSchema = new Schema ({
     date: Date,
     description: String,
     comments: [commentSchema],
-    authors: [{type: Schema.Types.ObjectId, ref: 'User'}]
+    author: {
+      type: Schema.Types.ObjectId, 
+      ref: 'User'
+    }
 }, {
     timestamps: true
 });

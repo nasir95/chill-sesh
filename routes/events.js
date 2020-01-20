@@ -6,16 +6,7 @@ router.get('/events', isLoggedIn, eventsCtrl.index);
 router.get('/events/new', isLoggedIn, eventsCtrl.new);
 router.get('/events/:id', isLoggedIn, eventsCtrl.show);
 router.post('/events', isLoggedIn, eventsCtrl.create);
-router.delete('/events/:id', isLoggedIn, function(req, res) {
-
-  // Event.findById(req.params.id, function(err, event) {
-    // console.log(event)
-      event.remove(req.params.id, function(event, err) {
-      console.log(event);
-        res.redirect('/events');
-      });
-    // })
-    });  
+router.delete('/events/:id', isLoggedIn, eventsCtrl.deleteOne);  
 
 
 function isLoggedIn(req, res, next) {
