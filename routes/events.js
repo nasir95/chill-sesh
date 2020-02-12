@@ -1,18 +1,16 @@
-const router = require('express').Router();
-const eventsCtrl = require('../controllers/events');
+const router = require("express").Router();
+const eventsCtrl = require("../controllers/events");
 
-
-router.get('/', isLoggedIn, eventsCtrl.index);
-router.get('/new', isLoggedIn, eventsCtrl.new);
-router.post('/', isLoggedIn, eventsCtrl.create);
-router.get('/:id', isLoggedIn, eventsCtrl.show);
-router.delete('/:id', eventsCtrl.deleteOne, isLoggedIn);
-
+router.get("/events", isLoggedIn, eventsCtrl.index);
+router.get("/events/new", isLoggedIn, eventsCtrl.new);
+router.get("/events/:id", isLoggedIn, eventsCtrl.show);
+router.post("/events", isLoggedIn, eventsCtrl.create);
+router.post("/events/:id", isLoggedIn, eventsCtrl.update);
+router.delete("/events/:id", isLoggedIn, eventsCtrl.deleteOne);
 
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    res.redirect('/auth/google');
-  }
-
+  if (req.isAuthenticated()) return next();
+  res.redirect("/auth/google");
+}
 
 module.exports = router;

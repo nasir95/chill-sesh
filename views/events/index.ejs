@@ -1,58 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Chill Sesh</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
-  <!-- Materialize Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Materialize CSS Framework -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="/css/style.css" />
-  <!-- JavaScript for Materialize -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-<body>
-  <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper #01579b light-blue darken-4">
-        <a href="" class="brand-logo left">Chill Sesh</a>
-        <ul class="right">
-          <li><a href="/events/new">Post Event</a></li>
-          <!-- Place Login UI Here -->
+  <head>
+    <title>Chill Sesh</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Materialize Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Materialize CSS Framework -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- JavaScript for Materialize -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper #01579b light-blue darken-4">
+          <a href="" class="brand-logo left">Chill Sesh</a>
+          <ul class="right">
+            <li><a href="/events/new">Post Event</a></li>
+            <!-- Place Login UI Here -->
             <!-- new html below -->
             <li>
-            <% if (user) { %>
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-            <% } else { %>
-                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-            <% } %>
+              <% if (user) { %>
+              <a href="/logout"
+                ><i class="material-icons left">trending_flat</i>Log Out</a
+              >
+              <% } else { %>
+              <a href="/auth/google"
+                ><i class="material-icons left">vpn_key</i>Login with Google</a
+              >
+              <% } %>
             </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <header class="container">
-  </header>
-  <main class="container">
-   <% events.forEach(function (event) { %>
-   
-
-<div class="row">
-  <div class="leftcolumn">
-    <div class="card">
-      <img class="circle responsive-img" src="<%= user.avatar %>" alt="<%= user.name %>">
-      <h2><%= event.eventName %></h2 >
-      <div>Posted by <%=user.name%></div>
-      <label>Location</label>
-      <p><%= event.location %> </p>
-      <label>Date</label>
-      <p><%= event.date %></p>
-      <a href='/events/<%= event._id %>' class="btn btn-primary #01579b light-blue darken-4">Details</a>
+          </ul>
+        </div>
+      </nav>
     </div>
-  </div>
-</div>
-  <% }) %>
-  </main>
-</body>
+    <header class="container"></header>
+    <main class="container">
+      <% events.forEach(function (m) { %>
+      <div class="row">
+        <div class="leftcolumn">
+          <div class="card">
+            <img class="circle responsive-img" src="<%=  %>" alt="<%=  %>" />
+            <h2><%= m.eventName %></h2>
+            <div>Posted by <%= %></div>
+            <label>Location</label>
+            <p><%= m.location %></p>
+            <label>Date</label>
+            <p><%= m.date %></p>
+            <a
+              href="/events/<%= m._id %>"
+              class="btn btn-primary #01579b light-blue darken-4"
+              >Details</a
+            >
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </main>
+  </body>
 </html>

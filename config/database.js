@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost:3000/events', { 
+mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/chill-sesh', { 
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true 

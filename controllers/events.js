@@ -1,61 +1,57 @@
-const User = require('../models/user');
-const Event = require('../models/event')
-
+const Event = require("../models/event");
 
 module.exports = {
   index,
   new: addEvents,
   create,
   show,
-  deleteOne
+  deleteOne,
+  update
 };
 
 function index(req, res) {
-  Event.find({}).populate('events').exec(function(err, events) {
-    events = events.reverse();
-    // console.log(events)
-    res.render('events/index', { events, user: req.user });
-  });
+  Event.find({})
+    .populate("author")
+    .exec(function(err, events) {
+      events = events.reverse();
+      res.render("events/index", {
+        events,
+        user: req.user
+      });
+    });
 }
 
 function addEvents(req, res) {
-  res.render('events/new', { user: req.user }); 
+  res.render("events/new", { user: req.user });
 }
 
 function create(req, res) {
-
   const event = new Event(req.body);
-  
-  User.findById(req.user._id, function(err, user) {
-    user.events.push(event._id);
-    user.save(function(){
-      event.save(function() {
-        res.redirect('/events');
-      });
-    });  
+  event.author = req.user._id;
+  event.save(function() {
+    res.redirect("/events");
   });
 }
 
 function show(req, res) {
-  Event.findById(req.params.id).populate('events').exec(function(err, event) {
-    // console.log(event);
-    res.render('events/show', { 
-       event, user: req.user 
-    });
-   });
-  };
-
-  function deleteOne(req, res) {
-    User.findById(req.user, function(err, user){
-      user.events.forEach(function(m){
-          Events.findOneAndDelete({_id: m}, function(err) {
-              if(err) return console.log(err);
-              res.redirect('/events')
-        });
+  Event.findById(req.params.id)
+    .populate("author")
+    .exec(function(err, event) {
+      res.render("events/show", {
+        event,
+        user: req.user
       });
     });
-  }
-    
-  
+}
 
+function deleteOne(req, res) {
+  Event.findByIdAndDelete(req.params.id, function(err, deletedEvent) {
+    res.redirect("/events");
+  });
+}
 
+function update(req, res) {
+  req.body.done === "on";
+  Event.updateOne(req.params.id, req.body);
+  res.redirect("/events");
+}

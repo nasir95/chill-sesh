@@ -43,8 +43,8 @@ app.use(methodOverride('_method'));
 //Mount routes
 app.use('/', indexRoutes);
 app.use('/users', usersRoutes);
-app.use('/events', eventsRoutes);
-app.use('/comments', commentsRoutes);
+app.use('/', eventsRoutes);
+// app.use('/comments', commentsRoutes);
 // Listen to port
 
 app.listen(port, () => {
